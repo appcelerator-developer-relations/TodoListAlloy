@@ -1,30 +1,33 @@
 function Controller() {
-    function doClick(e) {
-        alert($.label.text);
-    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    var $ = this, exports = {};
-    $.__views.index = A$(Ti.UI.createTabGroup({
+    this.__controllerPath = "index";
+    arguments[0] ? arguments[0]["__parentSymbol"] : null;
+    arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
+    var $ = this;
+    var exports = {};
+    $.__views.index = Ti.UI.createTabGroup({
         id: "index"
-    }), "TabGroup", null);
+    });
     $.__views.__alloyId2 = Alloy.createController("todo", {
         id: "__alloyId2"
     });
     $.__views.index.addTab($.__views.__alloyId2.getViewEx({
-        recurse: !0
+        recurse: true
     }));
     $.__views.__alloyId4 = Alloy.createController("done", {
         id: "__alloyId4"
     });
     $.__views.index.addTab($.__views.__alloyId4.getViewEx({
-        recurse: !0
+        recurse: true
     }));
-    $.addTopLevelView($.__views.index);
+    $.__views.index && $.addTopLevelView($.__views.index);
+    exports.destroy = function() {};
     _.extend($, $.__views);
     $.index.open();
     _.extend($, exports);
 }
 
-var Alloy = require("alloy"), Backbone = Alloy.Backbone, _ = Alloy._, A$ = Alloy.A;
+var Alloy = require("alloy"), Backbone = Alloy.Backbone, _ = Alloy._;
 
 module.exports = Controller;

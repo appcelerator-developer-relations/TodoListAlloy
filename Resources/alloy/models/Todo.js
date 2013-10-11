@@ -14,8 +14,8 @@ exports.definition = {
             validate: function(attrs) {
                 for (var key in attrs) {
                     var value = attrs[key];
-                    if (key === "item" && value.length <= 0) return "Error: No item!";
-                    if (key === "done" && value.length <= 0) return "Error: No completed flag!";
+                    if ("item" === key && 0 >= value.length) return "Error: No item!";
+                    if ("done" === key && 0 >= value.length) return "Error: No completed flag!";
                 }
             }
         });

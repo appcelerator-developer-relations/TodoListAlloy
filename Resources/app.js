@@ -1,5 +1,3 @@
-var Alloy = require("alloy"), _ = require("alloy/underscore")._;
-
-Alloy.CFG = require("alloy/CFG");
+var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
 Alloy.createController("index");

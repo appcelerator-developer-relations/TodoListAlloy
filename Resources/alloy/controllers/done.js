@@ -1,26 +1,31 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    var $ = this, exports = {};
-    $.__views.doneWin = A$(Ti.UI.createWindow({
+    this.__controllerPath = "done";
+    arguments[0] ? arguments[0]["__parentSymbol"] : null;
+    arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
+    var $ = this;
+    var exports = {};
+    $.__views.doneWin = Ti.UI.createWindow({
         backgroundColor: "white",
         id: "doneWin",
         title: "Done"
-    }), "Window", null);
-    var __alloyId0 = [];
-    $.__views.doneTable = A$(Ti.UI.createTableView({
+    });
+    $.__views.doneTable = Ti.UI.createTableView({
         id: "doneTable"
-    }), "TableView", $.__views.doneWin);
+    });
     $.__views.doneWin.add($.__views.doneTable);
-    $.__views.done = A$(Ti.UI.createTab({
+    $.__views.done = Ti.UI.createTab({
         window: $.__views.doneWin,
         title: "Done",
         id: "done"
-    }), "Tab", null);
-    $.addTopLevelView($.__views.done);
+    });
+    $.__views.done && $.addTopLevelView($.__views.done);
+    exports.destroy = function() {};
     _.extend($, $.__views);
     _.extend($, exports);
 }
 
-var Alloy = require("alloy"), Backbone = Alloy.Backbone, _ = Alloy._, A$ = Alloy.A;
+var Alloy = require("alloy"), Backbone = Alloy.Backbone, _ = Alloy._;
 
 module.exports = Controller;

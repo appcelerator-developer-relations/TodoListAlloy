@@ -4,7 +4,7 @@ var addBtn = Ti.UI.createButton({
 	title:'+'
 });
 addBtn.addEventListener('click', function() {
-	var controller = Alloy.getController("add");
+	var controller = Alloy.createController("add");
 	controller.addWin.open();
 });
 $.todoWin.setRightNavButton(addBtn);
@@ -17,7 +17,7 @@ $.todoTable.updateContent = function(_rows) {
 	var rows = [],
 		i = 0,
 		len = _rows.length;
-		
+
 	for ( ; i < len; i++) {
 		rows.push(Ti.UI.createTableViewRow(_rows[i]));
 	}
@@ -25,7 +25,7 @@ $.todoTable.updateContent = function(_rows) {
 };
 
 $.todoTable.addEventListener('click', function(e) {
-	Ti.API.info('ID:'+e.rowData.id);
+	Ti.API.info('Title: ' +e.rowData.title);
 });
 
 Ti.App.addEventListener('app:update_list', function(_collection) {
