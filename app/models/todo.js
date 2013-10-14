@@ -1,5 +1,5 @@
 exports.definition = {
-	
+
 	config: {
 		"columns": {
 			"item":"text",
@@ -9,11 +9,11 @@ exports.definition = {
 			"type":"sql",
 			"collection_name":"todo"
 		}
-	},		
+	},
 
-	extendModel: function(Model) {		
+	extendModel: function(Model) {
 		_.extend(Model.prototype, {
-						
+
 			// extended functions go here
 			validate: function (attrs) {
 				for (var key in attrs) {
@@ -26,26 +26,26 @@ exports.definition = {
 					if (key === "done") {
 						if (value.length <= 0) {
 							return 'Error: No completed flag!';
-						}	
-					}	
+						}
+					}
 				}
-			}	
+			}
 
 		}); // end extend
-		
+
 		return Model;
 	},
-	
-	
-	extendCollection: function(Collection) {		
+
+
+	extendCollection: function(Collection) {
 		_.extend(Collection.prototype, {
-			
-			// extended functions go here			
-			
+
+			// extended functions go here
+
 		}); // end extend
-		
+
 		return Collection;
 	}
-		
+
 }
 
